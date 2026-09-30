@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#060610"/>
+  <title>Diário de Trades</title>
+
+  <!-- Fontes e ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Estilos: um arquivo por assunto -->
+  <link rel="stylesheet" href="css/tokens.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/layout.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/charts.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== MENU LATERAL ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-text"><span class="logo-full">Diário de Trades</span><span class="logo-short">DT</span></div>
+      <button class="collapse-btn" id="collapse-btn" title="Recolher menu"><i class="fa-solid fa-chevron-left"></i><span>Recolher</span></button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item" data-view="overview"><i class="fa-solid fa-chart-pie"></i><span>Visão Geral</span><em class="nav-tip">Visão Geral</em></button>
+      <button class="nav-item" data-view="trades"><i class="fa-solid fa-list"></i><span>Trades</span><em class="nav-tip">Trades</em></button>
+      <button class="nav-item" data-view="strategies"><i class="fa-solid fa-chess-knight"></i><span>Estratégias</span><em class="nav-tip">Estratégias</em></button>
+      <button class="nav-item" data-view="assets"><i class="fa-solid fa-coins"></i><span>Ativos</span><em class="nav-tip">Ativos</em></button>
+      <button class="nav-item" data-view="help"><i class="fa-solid fa-circle-question"></i><span>Como usar</span><em class="nav-tip">Como usar</em></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="file-icon"><i class="fa-solid fa-file-excel"></i></div>
+      <div class="file-info">
+        <span class="file-name" id="file-name"></span>
+        <span class="file-date" id="file-date"></span>
+        <button class="collapse-btn hidden" id="forget-btn"><i class="fa-solid fa-trash-can"></i><span>Esquecer planilha</span></button>
+      </div>
+    </div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- ===================== CONTEÚDO ===================== -->
+  <main class="content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="btn btn-icon menu-btn" id="menu-btn" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
+        <h1 id="page-title">Visão Geral</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="pills" id="market-pills">
+          <button class="pill" data-market="B3">B3</button>
+          <button class="pill" data-market="EUA">EUA</button>
+          <button class="pill" data-market="CRIPTO">Cripto</button>
+        </div>
+        <button class="btn btn-primary" data-action="load"><i class="fa-solid fa-file-arrow-up"></i> Carregar planilha</button>
+        <input type="file" id="file-input" accept=".xlsx,.xls,.xlsm,.ods,.csv" hidden/>
+      </div>
+    </header>
+
+    <!-- Filtros: valem para todas as telas -->
+    <div class="filters hidden" id="filters">
+      <label class="field">Estratégia <select class="select" id="f-estrategia"></select></label>
+      <label class="field">Ativo <select class="select" id="f-ativo"></select></label>
+      <label class="field">Período <select class="select" id="f-periodo"></select></label>
+    </div>
+
+    <div class="dashboard">
+      <div id="notices"></div>
+      <div id="view" style="display:flex;flex-direction:column;gap:var(--gap)"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Leitura de Excel no navegador (SheetJS) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<!-- Scripts: um arquivo por assunto, nesta ordem -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/metrics.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/views/overview.js"></script>
+<script src="js/views/trades.js"></script>
+<script src="js/views/groups.js"></script>
+<script src="js/views/help.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

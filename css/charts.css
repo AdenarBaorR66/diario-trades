@@ -1,0 +1,34 @@
+/* ============================================================
+   GRÁFICOS — estilo dos SVGs e da caixa de informação (tooltip)
+   ============================================================ */
+.chart { width: 100%; position: relative; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart-empty { color: var(--muted); font-size: 0.8rem; padding: 32px 0; text-align: center; }
+
+.axis-text { fill: var(--muted); font-size: 10px; font-family: var(--font-body); }
+.grid-line { stroke: var(--grid); stroke-width: 1; }
+.zero-line { stroke: rgba(255, 255, 255, 0.22); stroke-width: 1; }
+
+.line-main { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.line-loss { fill: none; stroke: var(--loss); stroke-width: 1.5; stroke-linejoin: round; }
+.bar-gain { fill: var(--gain); }
+.bar-loss { fill: var(--loss); }
+.bar-hit { fill: transparent; cursor: default; }
+.bar-hit:hover + .bar-gain, .bar-hit:hover + .bar-loss { filter: brightness(1.25); }
+
+.cross-line { stroke: rgba(255, 255, 255, 0.35); stroke-width: 1; stroke-dasharray: 3 3; }
+.cross-dot { fill: var(--accent); stroke: var(--bg-1); stroke-width: 2; }
+
+.chart-legend { display: flex; gap: 16px; font-size: 0.75rem; color: var(--muted); flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.chart-tip {
+  position: fixed; z-index: 500; pointer-events: none;
+  background: var(--bg-2); border: 1px solid var(--border-m); border-radius: 8px;
+  padding: 8px 12px; font-size: 0.75rem; color: var(--text);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
+  opacity: 0; transition: opacity 0.12s; max-width: 240px;
+}
+.chart-tip.show { opacity: 1; }
+.chart-tip b { color: var(--heading); font-weight: 500; }

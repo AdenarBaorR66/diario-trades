@@ -1,0 +1,47 @@
+/* ============================================================
+   TOKENS — cores, fontes e medidas do design system (Cadence)
+   Mude uma cor aqui e ela muda no dashboard inteiro.
+   ============================================================ */
+:root {
+  /* Fundos */
+  --bg-0: #060610;
+  --bg-1: #0A0A18;
+  --bg-2: #0D0D1F;
+  --glass: rgba(255, 255, 255, 0.03);
+
+  /* Marca */
+  --accent: #14B8A6;
+  --accent-dark: #0D9488;
+  --accent-light: #2DD4BF;
+  --accent-300: #5EEAD4;
+
+  /* Texto */
+  --text: #E8E8ED;
+  --heading: #FAFAFA;
+  --muted: rgba(255, 255, 255, 0.50);
+  --faint: rgba(255, 255, 255, 0.28);
+
+  /* Bordas */
+  --border-s: rgba(20, 184, 166, 0.12);
+  --border-m: rgba(20, 184, 166, 0.20);
+  --border-l: rgba(20, 184, 166, 0.30);
+  --grid: rgba(255, 255, 255, 0.06);
+
+  /* Resultado: ganho e perda (validados contra --bg-1) */
+  --gain: #14B8A6;
+  --loss: #F0525A;
+  --warn: #F59E0B;
+
+  /* Tipografia */
+  --font-body: 'Inter', sans-serif;
+  --font-head: 'Outfit', sans-serif;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Medidas */
+  --sidebar-w: 240px;
+  --sidebar-w-collapsed: 64px;
+  --radius: 12px;
+  --gap: 16px;
+}

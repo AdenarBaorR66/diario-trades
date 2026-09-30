@@ -1,0 +1,132 @@
+/* ============================================================
+   COMPONENTES — botões, pills, cards, KPIs, tabelas, avisos
+   ============================================================ */
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer;
+  font-size: 0.8rem; border: 1px solid var(--border-m);
+  background: transparent; color: var(--text); transition: all 0.2s; white-space: nowrap;
+  text-decoration: none;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent-light); background: rgba(20, 184, 166, 0.05); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  border-color: transparent; color: #fff; font-weight: 500;
+}
+.btn-primary:hover { color: #fff; filter: brightness(1.1); background: linear-gradient(135deg, var(--accent-dark), var(--accent)); }
+.btn-icon { padding: 8px 10px; }
+
+/* ---------- Pills (mercado e período) ---------- */
+.pills {
+  display: flex; background: var(--glass); border: 1px solid var(--border-s);
+  border-radius: 8px; padding: 4px;
+}
+.pill {
+  background: transparent; border: none; color: var(--muted);
+  padding: 4px 12px; font-size: 0.8rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+}
+.pill:hover { color: var(--heading); }
+.pill.active { background: rgba(20, 184, 166, 0.15); color: var(--accent-light); }
+
+/* ---------- Selects dos filtros ---------- */
+.field { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--muted); }
+.select {
+  background: var(--bg-1); border: 1px solid var(--border-s); border-radius: 8px;
+  padding: 6px 10px; color: var(--text); font-size: 0.8rem; max-width: 180px;
+}
+.select:focus, .search:focus { outline: none; border-color: var(--accent); }
+.search {
+  background: var(--bg-1); border: 1px solid var(--border-s); border-radius: 8px;
+  padding: 6px 10px; color: var(--text); font-size: 0.8rem; width: 200px; max-width: 100%;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: rgba(10, 10, 24, 0.5);
+  border: 1px solid var(--border-s);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  min-width: 0;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.3), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.card:hover::before { opacity: 1; }
+.card-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.card-title { font-size: 0.9rem; font-weight: 500; color: var(--heading); }
+.card-sub { font-size: 0.75rem; color: var(--muted); }
+
+/* ---------- KPIs ---------- */
+.kpi { padding: 20px; }
+.kpi-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.kpi-val { font-family: var(--font-head); font-size: 1.75rem; color: var(--heading); line-height: 1.2; }
+.kpi-note { font-size: 0.75rem; color: var(--muted); margin-top: 4px; display: flex; align-items: center; gap: 6px; }
+.kpi-note .pos, .kpi-note .neg { font-weight: 500; }
+
+@media (max-width: 480px) {
+  .kpi { padding: 14px; }
+  .kpi-val { font-size: 1.3rem; }
+}
+
+/* ---------- Lista de métricas (duas colunas) ---------- */
+.metric-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 24px; }
+.metric-row {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 9px 0; border-bottom: 1px solid var(--grid); font-size: 0.82rem;
+}
+.metric-row span:first-child { color: var(--muted); }
+.metric-row span:last-child { white-space: nowrap; }
+
+/* ---------- Tabelas ---------- */
+.table-wrap { overflow-x: auto; margin: 0 -8px; }
+.table { width: 100%; border-collapse: collapse; font-size: 0.8rem; white-space: nowrap; }
+.table th {
+  text-align: left; font-weight: 500; color: var(--muted); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 10px 8px; border-bottom: 1px solid var(--border-s); cursor: pointer; user-select: none;
+}
+.table th.sorted { color: var(--accent-light); }
+.table th.r, .table td.r { text-align: right; }
+.table td { padding: 10px 8px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+.table tbody tr:hover { background: rgba(20, 184, 166, 0.04); }
+.table td.obs { white-space: normal; min-width: 180px; color: var(--muted); }
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; border: 1px solid;
+}
+.badge-open { color: var(--warn); border-color: rgba(245, 158, 11, 0.35); background: rgba(245, 158, 11, 0.08); }
+.badge-closed { color: var(--muted); border-color: var(--grid); }
+.badge-buy { color: var(--accent-light); border-color: var(--border-m); }
+.badge-sell { color: var(--loss); border-color: rgba(240, 82, 90, 0.35); }
+
+/* ---------- Avisos ---------- */
+.notice {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 10px 16px; border-radius: 8px; font-size: 0.8rem;
+  border: 1px solid var(--border-m); background: rgba(20, 184, 166, 0.06);
+}
+#notices { display: flex; flex-direction: column; gap: 8px; }
+#notices:empty { display: none; }
+.notice.warn { border-color: rgba(245, 158, 11, 0.35); background: rgba(245, 158, 11, 0.06); }
+
+/* ---------- Tela vazia ---------- */
+.empty { text-align: center; padding: 56px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.empty h2 { font-size: 1.6rem; }
+.empty p { color: var(--muted); max-width: 520px; }
+.empty-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ---------- Guia de uso ---------- */
+.help h3 { font-size: 1.05rem; margin: 4px 0 10px; }
+.help ol, .help ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.help li { color: var(--text); }
+.help code {
+  background: var(--bg-2); border: 1px solid var(--border-s); border-radius: 4px;
+  padding: 1px 6px; font-size: 0.78rem;
+}

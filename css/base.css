@@ -1,0 +1,37 @@
+/* ============================================================
+   BASE — reset, tipografia e utilidades gerais
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: var(--font-head); color: var(--heading); font-weight: 300; }
+
+button, select, input { font-family: inherit; font-size: inherit; color: inherit; }
+
+a { color: var(--accent-light); }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, var(--accent-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.num { font-variant-numeric: tabular-nums; }
+.pos { color: var(--gain); }
+.neg { color: var(--loss); }
+.muted { color: var(--muted); }
+.hidden { display: none !important; }
+
+b, strong { font-weight: 500; color: var(--heading); }
