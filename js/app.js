@@ -21,7 +21,7 @@ DT.app = (function () {
     data: DT.storage.loadData(),
     market: prefs.market || 'B3',
     view: VIEWS[prefs.view] ? prefs.view : 'overview',
-    filters: { estrategia: '', ativo: '', periodo: 'all', de: '', ate: '' }
+    filters: { estrategia: '', tempo: '', confirmacao: '', ativo: '', periodo: 'all', de: '', ate: '' }
   };
 
   const $ = sel => document.querySelector(sel);
@@ -51,7 +51,7 @@ DT.app = (function () {
     $('#forget-btn').addEventListener('click', forget);
 
     // filtros
-    ['estrategia', 'ativo', 'periodo', 'de', 'ate'].forEach(k =>
+    ['estrategia', 'tempo', 'confirmacao', 'ativo', 'periodo', 'de', 'ate'].forEach(k =>
       $('#f-' + k).addEventListener('change', e => { state.filters[k] = e.target.value; render(); }));
 
     // redesenha os gráficos quando a tela muda de tamanho
@@ -66,7 +66,7 @@ DT.app = (function () {
 
   function closeMobileMenu() { $('#sidebar').classList.remove('open'); $('#backdrop').classList.remove('show'); }
 
-  function resetFilters() { state.filters.estrategia = ''; state.filters.ativo = ''; }
+  function resetFilters() { Object.assign(state.filters, { estrategia: '', tempo: '', confirmacao: '', ativo: '' }); }
 
   function savePrefs() {
     DT.storage.savePrefs({ market: state.market, view: state.view, collapsed: $('#sidebar').classList.contains('collapsed') });
@@ -152,6 +152,8 @@ DT.app = (function () {
     const opts = (list, sel, allLabel) => '<option value="">' + allLabel + '</option>' +
       list.map(v => '<option value="' + U.esc(v) + '"' + (v === sel ? ' selected' : '') + '>' + U.esc(v) + '</option>').join('');
     $('#f-estrategia').innerHTML = opts(uniq('estrategia'), f.estrategia, 'Todas');
+    $('#f-tempo').innerHTML = opts(uniq('tempo'), f.tempo, 'Todos');
+    $('#f-confirmacao').innerHTML = opts(uniq('confirmacao'), f.confirmacao, 'Todas');
     $('#f-ativo').innerHTML = opts(uniq('ativo'), f.ativo, 'Todos');
     $('#f-periodo').innerHTML = C.periods.map(p => '<option value="' + p.id + '"' + (p.id === f.periodo ? ' selected' : '') + '>' + p.label + '</option>').join('');
     // período personalizado: mostra as datas De / Até (padrão: do dia 1 do mês até hoje)

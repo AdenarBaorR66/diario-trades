@@ -28,6 +28,8 @@ DT.config = {
     stop:         ['stop'],
     alvo:         ['alvo'],
     estrategia:   ['estrategia', 'setup'],
+    tempo:        ['tempo grafico', 'tempo', 'timeframe'],
+    confirmacao:  ['confirmacao', 'gatilho', 'filtro'],
     qtdSaida1:    ['qtd saida 1', 'quantidade de saida 01', 'quantidade de saida 1'],
     precoSaida1:  ['preco saida 1', 'preco saida 01'],
     qtdSaida2:    ['qtd saida 2', 'quantidade de saida 02', 'quantidade de saida 2'],
@@ -42,6 +44,10 @@ DT.config = {
   // Colunas obrigatórias para reconhecer uma tabela de trades
   requiredColumns: ['ativo', 'dataEntrada', 'precoEntrada'],
   headerScanRows: 40,
+
+  // Textos usados quando Tempo Gráfico ou Confirmação estão em branco
+  semTempo: 'Não informado',
+  semConfirmacao: 'Sem confirmação',
 
   // Opções do filtro de período
   periods: [

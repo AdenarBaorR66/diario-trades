@@ -18,7 +18,11 @@ DT.metrics = (function () {
     const base = qtdSaida * t.precoEntrada;
     let dias = null;
     if (fechado) dias = cfg.diasUteis ? U.businessDaysBetween(t.dataEntrada, t.dataSaida) : U.daysBetween(t.dataEntrada, t.dataSaida);
+    const tempo = t.tempo || '', conf = t.confirmacao || '';
     return Object.assign({}, t, {
+      tempo: tempo || DT.config.semTempo,
+      confirmacao: conf || DT.config.semConfirmacao,
+      combinacao: t.estrategia + (conf ? ' + ' + conf : '') + (tempo ? ' · ' + tempo : ''),
       status: fechado ? 'Fechado' : 'Aberto',
       qtdSaida,
       precoSaida: qtdSaida ? valorSaida / qtdSaida : null,
@@ -47,6 +51,8 @@ DT.metrics = (function () {
     const end = custom ? f.ate : null;
     return trades.filter(t =>
       (!f.estrategia || t.estrategia === f.estrategia) &&
+      (!f.tempo || t.tempo === f.tempo) &&
+      (!f.confirmacao || t.confirmacao === f.confirmacao) &&
       (!f.ativo || t.ativo === f.ativo) &&
       (!start || t.dataEntrada >= start) &&
       (!end || t.dataEntrada <= end));

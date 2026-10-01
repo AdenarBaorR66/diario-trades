@@ -15,6 +15,8 @@ DT.views.trades = (function () {
       ['n', 'Nº', true, t => t.n == null ? '' : t.n],
       ['ativo', 'Ativo', false, t => '<b>' + U.esc(t.ativo) + '</b>'],
       ['estrategia', 'Estratégia', false, t => U.esc(t.estrategia)],
+      ['tempo', 'Tempo', false, t => U.esc(t.tempo)],
+      ['confirmacao', 'Confirmação', false, t => U.esc(t.confirmacao)],
       ['lado', 'Lado', false, t => '<span class="badge ' + (t.lado > 0 ? 'badge-buy' : 'badge-sell') + '">' + (t.lado > 0 ? 'Compra' : 'Venda') + '</span>'],
       ['dataEntrada', 'Entrada', false, t => U.fmtDate(t.dataEntrada)],
       ['qtd', 'Qtd', true, t => U.qty(t.qtd)],
@@ -48,7 +50,7 @@ DT.views.trades = (function () {
     const cols = columns(ctx.cfg);
     const q = U.normalize(query);
     const rows = ctx.trades
-      .filter(t => !q || U.normalize(t.ativo + ' ' + t.estrategia + ' ' + t.obs).indexOf(q) >= 0)
+      .filter(t => !q || U.normalize(t.ativo + ' ' + t.combinacao + ' ' + t.obs).indexOf(q) >= 0)
       .slice()
       .sort((a, b) => {
         const va = a[sort.key], vb = b[sort.key];

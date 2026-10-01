@@ -152,6 +152,8 @@ DT.loader = (function () {
         stop: positiveOrNull(get(r, 'stop')),
         alvo: positiveOrNull(get(r, 'alvo')),
         estrategia: String(get(r, 'estrategia') || 'Sem estratégia').trim(),
+        tempo: get(r, 'tempo') ? String(get(r, 'tempo')).trim() : '',
+        confirmacao: get(r, 'confirmacao') ? String(get(r, 'confirmacao')).trim() : '',
         saidas,
         dataSaida: toISODate(get(r, 'dataSaida')),
         custos: U.toNumber(get(r, 'custos')) || 0,

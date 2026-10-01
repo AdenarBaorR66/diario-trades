@@ -16,11 +16,11 @@ No computador também dá para abrir sem internet de hospedagem: baixe a pasta e
 
 1. Abra `Diario_de_Trades.xlsx` (Excel ou Google Planilhas).
 2. Use a aba do mercado: `B3`, `EUA` ou `CRIPTO`. Uma linha por trade.
-3. Preencha as colunas verdes. As colunas escuras são calculadas sozinhas.
+3. Preencha os dados de entrada, estratégia, tempo gráfico, confirmação e saídas. O dashboard calcula o resto.
 4. Trade aberto: deixe `Data Saída` e as saídas em branco.
 5. Salve no Drive e carregue no dashboard.
 
-Capital inicial, moeda e taxa livre de risco ficam na aba `Config`. A lista de estratégias fica na aba `Setups`.
+Capital inicial, moeda e taxa livre de risco ficam na aba `Config`. As listas de estratégias, tempos gráficos e confirmações ficam na aba `Setups` (colunas A, D e E).
 
 A planilha antiga (`BACKTEST_IFR2.xlsx`, uma aba por ativo) também é aceita: as abas com nome de ativo são lidas como B3.
 

@@ -8,16 +8,23 @@ DT.views = DT.views || {};
 (function () {
   const U = DT.utils;
 
-  function makeView(field, title, singular) {
+  // modes: formas de agrupar a tela; com mais de uma, aparecem botões para trocar
+  function makeView(modes) {
+    let current = 0;
     return {
       render(root, ctx) {
         const cfg = ctx.cfg;
+        const mode = modes[current];
+        const field = mode.field, title = mode.title, singular = mode.singular;
         const rows = DT.metrics.groupBy(ctx.trades, field, cfg);
         const closedRows = rows.filter(r => r.n > 0);
+        const switcher = modes.length < 2 ? '' :
+          '<div class="pills">' + modes.map((m, i) =>
+            '<button class="pill' + (i === current ? ' active' : '') + '" data-mode="' + i + '">' + m.label + '</button>').join('') + '</div>';
 
         root.innerHTML =
           '<div class="card"><div class="card-header"><div><div class="card-title">Resultado por ' + singular + '</div>' +
-          '<div class="card-sub">Soma dos trades fechados</div></div></div><div class="chart" id="gr-chart"></div></div>' +
+          '<div class="card-sub">Soma dos trades fechados</div></div>' + switcher + '</div><div class="chart" id="gr-chart"></div></div>' +
           '<div class="card"><div class="card-header"><div class="card-title">' + title + '</div>' +
           '<div class="card-sub">' + rows.length + ' no filtro atual</div></div>' + table(rows, cfg, singular) + '</div>';
 
@@ -26,6 +33,10 @@ DT.views = DT.views || {};
           tip: it => '<b>' + U.esc(it.label) + '</b><br>' + U.money(it.value, cfg.moeda, { sign: true }) +
             '<br>' + it.row.n + ' trades · acerto ' + U.pct(it.row.acerto)
         });
+        root.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {
+          current = +b.dataset.mode;
+          this.render(root, ctx);
+        }));
       }
     };
   }
@@ -49,6 +60,13 @@ DT.views = DT.views || {};
       '</tbody></table></div>';
   }
 
-  DT.views.strategies = makeView('estrategia', 'Estratégias comparadas', 'estratégia');
-  DT.views.assets = makeView('ativo', 'Ativos comparados', 'ativo');
+  DT.views.strategies = makeView([
+    { field: 'estrategia',  label: 'Estratégia',    title: 'Estratégias comparadas',       singular: 'estratégia' },
+    { field: 'tempo',       label: 'Tempo gráfico', title: 'Tempos gráficos comparados',   singular: 'tempo gráfico' },
+    { field: 'confirmacao', label: 'Confirmação',   title: 'Confirmações comparadas',      singular: 'confirmação' },
+    { field: 'combinacao',  label: 'Combinação',    title: 'Combinações comparadas',       singular: 'combinação' }
+  ]);
+  DT.views.assets = makeView([
+    { field: 'ativo', label: 'Ativo', title: 'Ativos comparados', singular: 'ativo' }
+  ]);
 })();

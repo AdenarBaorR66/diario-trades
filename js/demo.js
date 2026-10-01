@@ -46,7 +46,9 @@ DT.demo = (function () {
           precoEntrada: +pe.toFixed(2), stop, alvo: +(pe * (1 + e[2] * 1.2)).toFixed(2), estrategia: e[0],
           saidas: aberto ? [] : [{ q: +qtd.toFixed(4), p: +(pe * (1 + move)).toFixed(2) }],
           dataSaida: aberto ? null : saida,
-          custos: m === 'B3' ? 2.5 : 1, obs: ''
+          custos: m === 'B3' ? 2.5 : 1, obs: '',
+          tempo: rand() < 0.65 ? 'Diário' : 'Semanal',
+          confirmacao: e[0] === 'IFR2' ? '' : (rand() < 0.5 ? 'Estocástico' : 'Éden')
         });
         d = aberto ? d : saida;
       }

@@ -17,7 +17,7 @@ DT.views.help = (function () {
 
     '<div class="card"><h3>2. Lançar um trade novo</h3><ol>' +
       '<li>Abra a planilha no Excel ou no Google Planilhas e vá na aba do mercado: <b>B3</b>, <b>EUA</b> ou <b>CRIPTO</b>.</li>' +
-      '<li>Na primeira linha vazia, preencha as colunas verdes: Ativo, Data Entrada, Lado, Qtd Entrada, Preço Entrada, Stop, Alvo e Estratégia.</li>' +
+      '<li>Na primeira linha vazia, preencha Ativo, Data Entrada, Compra ou Venda, Qtd Entrada, Preço Entrada, Stop, Alvo, Estratégia, Tempo Gráfico e Confirmação.</li>' +
       '<li>Enquanto o trade estiver aberto, deixe Data Saída e as saídas em branco. Ele aparece em <b>Posições abertas</b>.</li>' +
       '<li>Ao sair, preencha Qtd e Preço da Saída 1 (e 2 e 3 se sair em partes), a Data Saída e os Custos.</li>' +
       '<li>Salve o arquivo no Drive e toque em <b>Carregar planilha</b> aqui.</li>' +
@@ -25,9 +25,10 @@ DT.views.help = (function () {
 
     '<div class="card"><h3>3. Ajustes na planilha</h3><ul>' +
       '<li><b>Capital inicial, moeda e taxa livre de risco:</b> aba <code>Config</code>, uma linha por mercado.</li>' +
-      '<li><b>Estratégias novas:</b> acrescente o nome na aba <code>Setups</code>; ele entra na lista da coluna Estratégia.</li>' +
+      '<li><b>Estratégias novas:</b> acrescente o nome na aba <code>Setups</code> (coluna A); ele entra na lista da coluna Estratégia.</li>' +
+      '<li><b>Tempos gráficos e confirmações novos:</b> aba <code>Setups</code>, colunas D e E.</li>' +
       '<li>Não renomeie as abas nem os títulos das colunas: o dashboard encontra os dados pelos nomes.</li>' +
-      '<li>As colunas escuras (Financeiro, Risco, Resultado...) são só para consulta no Excel. O dashboard recalcula tudo sozinho.</li>' +
+      '<li>O dashboard calcula sozinho financeiro, risco, resultado, % e dias. A planilha não precisa de fórmulas.</li>' +
     '</ul></div>' +
 
     '<div class="card"><h3>4. Como ler as métricas</h3><ul>' +
@@ -49,7 +50,8 @@ DT.views.help = (function () {
 
     '<div class="card"><h3>6. Filtros e mercados</h3><ul>' +
       '<li>Os botões <b>B3 · EUA · Cripto</b> no topo trocam de mercado. Cada um tem capital, moeda e números próprios.</li>' +
-      '<li>Os filtros de estratégia, ativo e período valem para todas as telas.</li>' +
+      '<li>Os filtros de estratégia, tempo, confirmação, ativo e período valem para todas as telas.</li>' +
+      '<li>Na tela <b>Estratégias</b>, os botões no topo comparam por estratégia, por tempo gráfico, por confirmação ou pela combinação (ex.: 123 + Éden · Diário).</li>' +
       '<li>Para um intervalo exato (ex.: dia 1 ao 26), escolha <b>Período → Personalizado</b> e preencha <b>De</b> e <b>Até</b>. Vale a data de entrada do trade.</li>' +
       '<li>Toque em um gráfico para ver o valor exato de cada ponto ou barra.</li>' +
     '</ul></div>' +

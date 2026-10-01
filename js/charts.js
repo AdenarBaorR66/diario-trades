@@ -180,7 +180,7 @@ DT.charts = (function () {
   function hbars(el, items, opts) {
     opts = opts || {};
     if (!items || !items.length) return empty(el);
-    const rowH = 30, labelW = Math.min(150, Math.max(70, el.clientWidth * 0.3));
+    const rowH = 30, labelW = Math.min(230, Math.max(80, el.clientWidth * 0.35));
     const w = Math.max(el.clientWidth, 260), h = items.length * rowH + 8;
     const vals = items.map(i => i.value);
     const lo = Math.min(0, Math.min.apply(null, vals)), hi = Math.max(0, Math.max.apply(null, vals));
@@ -192,7 +192,7 @@ DT.charts = (function () {
       const left = Math.min(x0, x1), bw = Math.max(Math.abs(x1 - x0), 1);
       out += '<rect class="bar-hit" data-i="' + i + '" x="0" y="' + (cy - rowH / 2) + '" width="' + w + '" height="' + rowH + '"/>' +
         '<rect class="bar-' + (it.value >= 0 ? 'gain' : 'loss') + '" x="' + left + '" y="' + (cy - 7) + '" width="' + bw + '" height="14" rx="3"/>' +
-        '<text class="axis-text" x="' + labelW + '" y="' + (cy + 4) + '" text-anchor="end" style="font-size:11px;fill:var(--text)">' + U.esc(trim(it.label, 22)) + '</text>' +
+        '<text class="axis-text" x="' + labelW + '" y="' + (cy + 4) + '" text-anchor="end" style="font-size:11px;fill:var(--text)">' + U.esc(trim(it.label, Math.floor(labelW / 6.2))) + '</text>' +
         '<text class="axis-text" x="' + (it.value >= 0 ? x1 + 6 : x0 + 6) + '" y="' + (cy + 4) + '">' + (opts.fmt ? opts.fmt(it.value) : it.value) + '</text>';
     });
     el.innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" height="' + h + '">' +
