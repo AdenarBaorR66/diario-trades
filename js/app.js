@@ -190,7 +190,7 @@ DT.app = (function () {
       '<p>Escolha o arquivo Excel onde você registra seus trades. Ele é lido aqui mesmo, no seu navegador, e não é enviado para lugar nenhum.</p>' +
       '<div class="empty-actions">' +
         '<button class="btn btn-primary" data-action="load"><i class="fa-solid fa-file-arrow-up"></i> Carregar planilha</button>' +
-        '<a class="btn" href="modelo/Diario_de_Trades.xlsx" download><i class="fa-solid fa-download"></i> Baixar planilha modelo</a>' +
+        '<a class="btn" href="modelo/Diario_de_Trades.xlsx?v=' + C.modeloVersao + '" download><i class="fa-solid fa-download"></i> Baixar planilha modelo</a>' +
         '<button class="btn" id="demo-btn"><i class="fa-solid fa-flask"></i> Ver com dados de exemplo</button>' +
       '</div></div>';
     root.querySelector('[data-action="load"]').addEventListener('click', () => $('#file-input').click());

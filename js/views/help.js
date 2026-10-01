@@ -24,6 +24,7 @@ DT.views.help = (function () {
     '</ol></div>' +
 
     '<div class="card"><h3>3. Ajustes na planilha</h3><ul>' +
+      '<li><a class="btn" href="modelo/Diario_de_Trades.xlsx?v=' + DT.config.modeloVersao + '" download><i class="fa-solid fa-download"></i> Baixar planilha modelo</a></li>' +
       '<li><b>Capital inicial, moeda e taxa livre de risco:</b> aba <code>Config</code>, uma linha por mercado.</li>' +
       '<li><b>Estratégias novas:</b> acrescente o nome na aba <code>Setups</code> (coluna A); ele entra na lista da coluna Estratégia.</li>' +
       '<li><b>Tempos gráficos e confirmações novos:</b> aba <code>Setups</code>, colunas D e E.</li>' +

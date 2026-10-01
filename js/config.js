@@ -58,6 +58,9 @@ DT.config = {
     { id: 'custom', label: 'Personalizado' }
   ],
 
+  // Versão da planilha modelo: aumente quando o arquivo em modelo/ mudar
+  modeloVersao: 3,
+
   // Chave usada para lembrar a última planilha neste navegador
   storageKey: 'diario-trades:v1',
   prefsKey: 'diario-trades:prefs'
