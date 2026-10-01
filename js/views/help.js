@@ -50,6 +50,7 @@ DT.views.help = (function () {
     '<div class="card"><h3>6. Filtros e mercados</h3><ul>' +
       '<li>Os botões <b>B3 · EUA · Cripto</b> no topo trocam de mercado. Cada um tem capital, moeda e números próprios.</li>' +
       '<li>Os filtros de estratégia, ativo e período valem para todas as telas.</li>' +
+      '<li>Para um intervalo exato (ex.: dia 1 ao 26), escolha <b>Período → Personalizado</b> e preencha <b>De</b> e <b>Até</b>. Vale a data de entrada do trade.</li>' +
       '<li>Toque em um gráfico para ver o valor exato de cada ponto ou barra.</li>' +
     '</ul></div>' +
 

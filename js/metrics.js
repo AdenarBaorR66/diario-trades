@@ -42,11 +42,14 @@ DT.metrics = (function () {
   }
 
   function applyFilters(trades, f) {
-    const start = periodStart(f.periodo);
+    const custom = f.periodo === 'custom';
+    const start = custom ? f.de : periodStart(f.periodo);
+    const end = custom ? f.ate : null;
     return trades.filter(t =>
       (!f.estrategia || t.estrategia === f.estrategia) &&
       (!f.ativo || t.ativo === f.ativo) &&
-      (!start || t.dataEntrada >= start));
+      (!start || t.dataEntrada >= start) &&
+      (!end || t.dataEntrada <= end));
   }
 
   // ---------- 3. Resumo estatístico ----------

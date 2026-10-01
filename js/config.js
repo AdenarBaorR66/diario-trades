@@ -48,7 +48,8 @@ DT.config = {
     { id: 'all', label: 'Tudo' },
     { id: 'ytd', label: 'Ano atual' },
     { id: '12m', label: '12 meses' },
-    { id: '3m',  label: '3 meses' }
+    { id: '3m',  label: '3 meses' },
+    { id: 'custom', label: 'Personalizado' }
   ],
 
   // Chave usada para lembrar a última planilha neste navegador
